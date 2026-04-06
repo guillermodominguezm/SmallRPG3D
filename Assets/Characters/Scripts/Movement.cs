@@ -67,11 +67,6 @@ public class Movement : MonoBehaviour
             }
         }
 
-        //if (Input.GetKeyDown(KeyCode.I))
-        //{
-        //    inventoryUI.SetActive(true);
-        //}
-
     }
 
 }

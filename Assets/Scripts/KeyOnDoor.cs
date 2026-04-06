@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PressKeyOnDoor : MonoBehaviour
 {
-    public GameObject Instruction1;
-    public GameObject Instruction2;
+    public GameObject OpenDoorText;
+    public GameObject CloseDoorText;
     public GameObject AnimeObject;
     public AudioSource DoorOpenSound;
     public AudioSource DoorCloseSound;
@@ -15,8 +15,8 @@ public class PressKeyOnDoor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Instruction1.SetActive(false);
-        Instruction2.SetActive(false);
+        OpenDoorText.SetActive(false);
+        CloseDoorText.SetActive(false);
         isClosed = true;
     }
 
@@ -27,19 +27,19 @@ public class PressKeyOnDoor : MonoBehaviour
             Action = true;
             if (isClosed)
             {
-                Instruction1.SetActive(true);
+                OpenDoorText.SetActive(true);
             }
             else
             {
-                Instruction2.SetActive(true);
+                CloseDoorText.SetActive(true);
             }
         }
     }
 
     void OnTriggerExit(Collider collision)
     {
-        Instruction1.SetActive(false);
-        Instruction2.SetActive(false);
+        OpenDoorText.SetActive(false);
+        CloseDoorText.SetActive(false);
         Action = false;
     }
 
@@ -50,7 +50,7 @@ public class PressKeyOnDoor : MonoBehaviour
         {
             if (Action && isClosed)
             {
-                Instruction1.SetActive(false);
+                OpenDoorText.SetActive(false);
                 AnimeObject.GetComponent<Animator>().Play("DoorOpening2");
                 DoorOpenSound.Play();
                 isClosed = false;
@@ -58,7 +58,7 @@ public class PressKeyOnDoor : MonoBehaviour
             }
             if (Action && !isClosed)
             {
-                Instruction2.SetActive(false);
+                CloseDoorText.SetActive(false);
                 AnimeObject.GetComponent<Animator>().Play("DoorClosing2");
                 DoorCloseSound.Play();
                 isClosed = true;
@@ -67,3 +67,4 @@ public class PressKeyOnDoor : MonoBehaviour
         }
     }
 }
+
